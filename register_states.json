@@ -1,0 +1,22 @@
+[
+  {
+    "state": "state1",
+    "intents": ["我想要来医院挂号"],
+    "slot": ["#性别#", "#年龄#"],
+    "response": "好的，请确认您的性别年龄：#性别#、#年龄#",
+    "possible_states": ["state2"]
+  },
+  {
+    "state": "state2",
+    "intents": ["确认"],
+    "actions": ["假装返回一个支付二维码"],
+    "response": "请支付挂号费5元,支付后请刷新界面获取排队号码",
+    "possible_states": ["state3"]
+  },
+  {
+    "state": "state3",
+    "intents": ["刷新"],
+    "response": "您的排队号码为xx",
+    "possible_states": ["state3"]
+  }
+]
