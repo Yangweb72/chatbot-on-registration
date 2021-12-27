@@ -52,7 +52,7 @@ if __name__ == '__main__':
     sys.path.append("..")
     from config import config
 
-    config['slot_template_path'] = '../slot_template.xlsx'
-    config['state_path'] = './schema/'
+    config['slot_template_path'] = '../schema/slot_template.xlsx'
+    config['state_path'] = '../schema/'
 
     state_info, slot_templet_info = load_schema(config)
