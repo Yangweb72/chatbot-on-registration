@@ -18,7 +18,7 @@ class NLG:
 
         response = '没有回应？！'
         policy = self.user_info["policy"]
-        state = self.user_info["next_state"]
+        state = self.user_info["state"]
         if policy == "response":
             response = self.state_info[state]["response"]
             response = self.fill_slot(response)
@@ -26,7 +26,6 @@ class NLG:
             slot = policy.split(':')[1]
             response, _ = self.slot_templet_info[slot]
         print(response)
-        print('-' * 20)
 
 
 def nlg(user_info, state_info, slot_template_info):
@@ -38,7 +37,7 @@ def nlg(user_info, state_info, slot_template_info):
 if __name__ == '__main__':
     user_info = {'possible_states': ['state1'],
                  'query': '刷新',
-                 'next_state': 'state3',
+                 'state': 'state3',
                  'next_score': 1.0,
                  '#性别#': '男',
                  '#年龄#': '22',

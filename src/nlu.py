@@ -16,9 +16,9 @@ class NLU:
                 score = max(score, self.sentence_similarity(query, intent))  # 这里可以用文本分类或匹配的算法来提高效果，但没数据就直接用规则类的算法做了
             scores.append([state, score])
         scores = sorted(scores, reverse=True, key=lambda x: x[1])
-        next_state, next_score = scores[0]
-        self.user_info['next_state'] = next_state
-        self.user_info['next_score'] = next_score
+        state, score = scores[0]
+        self.user_info['state'] = state
+        self.user_info['score'] = score
 
     # 获取匹配分值，也是规则和模型两种
     # 没有数据就用jaccard距离直接算，也可以用编辑距离、词袋后的余弦相似度等简单算法
@@ -28,7 +28,7 @@ class NLU:
 
     def get_slot_value(self):
         query = self.user_info['query']
-        state = self.user_info['next_state']
+        state = self.user_info['state']
         slots = self.state_info[state].get("slot", [])
         for slot in slots:
             _, pattern = self.slot_templet_info[slot]
@@ -55,7 +55,7 @@ def nlu(user_info, state_info, slot_templet_info):
 if __name__ == '__main__':
     user_info = {'possible_states': ['state1'],
                  'query': '刷新',
-                 'next_state': 'state3',
+                 'state': 'state3',
                  'next_score': 1.0,
                  '#性别#': '男',
                  '#年龄#': '22',

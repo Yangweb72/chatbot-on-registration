@@ -1,6 +1,6 @@
 def dst(user_info, state_info):
     '''dialogue_state_track'''
-    state = user_info['next_state']
+    state = user_info['state']
     needed_slots = state_info[state].get("slot", [])
     user_info["needed_slots"] = []
     for needed_slot in needed_slots:
@@ -13,7 +13,7 @@ def dst(user_info, state_info):
 if __name__ == '__main__':
     user_info = {'possible_states': ['state1'],
                  'query': '刷新',
-                 'next_state': 'state3',
+                 'state': 'state3',
                  'next_score': 1.0,
                  '#性别#': '男',
                  '#年龄#': '22',
