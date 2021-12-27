@@ -9,14 +9,15 @@
   {
     "state": "state2",
     "intents": ["确认"],
-    "actions": ["假装返回一个支付二维码"],
+    "actions": ["假装返回一个支付二维码链接:https://www.pleasepayyourbill.com/your_info"],
     "response": "请支付挂号费5元,支付后请刷新界面获取排队号码",
     "possible_states": ["state3"]
   },
   {
     "state": "state3",
     "intents": ["刷新"],
-    "response": "您的排队号码为xx",
-    "possible_states": ["state3"]
+    "actions": ["假装将号码信息录入挂号系统:https://www.guahao.com/your_info"],
+    "response": "您的排队号码为xx,祝您身体健康,万事如意",
+    "possible_states": []
   }
 ]
