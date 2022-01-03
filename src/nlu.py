@@ -9,8 +9,8 @@ class NLU:
     def get_intent(self):
         query = self.user_info['query']
         scores = []
-        for state in self.user_info["possible_states"]:
-            intents = self.state_info[state]["intents"]
+        for state in self.user_info['possible_states']:
+            intents = self.state_info[state]['intents']
             score = 0
             for intent in intents:
                 score = max(score, self.sentence_similarity(query, intent))  # 这里可以用文本分类或匹配的算法来提高效果，但没数据就直接用规则类的算法做了
@@ -29,7 +29,7 @@ class NLU:
     def get_slot_value(self):
         query = self.user_info['query']
         state = self.user_info['state']
-        slots = self.state_info[state].get("slot", [])
+        slots = self.state_info[state].get('slot', [])
         for slot in slots:
             _, pattern = self.slot_templet_info[slot]
             if re.search(pattern, query):

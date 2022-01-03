@@ -17,12 +17,12 @@ class NLG:
         self.slot_templet_info = slot_template
 
         response = '没有回应？！'
-        policy = self.user_info["policy"]
-        state = self.user_info["state"]
-        if policy == "response":
-            response = self.state_info[state]["response"]
+        policy = self.user_info['policy']
+        state = self.user_info['state']
+        if policy == 'response':
+            response = self.state_info[state]['response']
             response = self.fill_slot(response)
-        elif policy.startswith("need:"):
+        elif policy.startswith('need:'):
             slot = policy.split(':')[1]
             response, _ = self.slot_templet_info[slot]
         print(response)

@@ -1,8 +1,8 @@
 def dst(user_info, state_info):
     '''dialogue_state_track'''
     state = user_info['state']
-    needed_slots = state_info[state].get("slot", [])
-    user_info["needed_slots"] = []
+    needed_slots = state_info[state].get('slot', [])
+    user_info['needed_slots'] = []
     for needed_slot in needed_slots:
         if needed_slot not in user_info:
             user_info['needed_slots'].append(needed_slot)

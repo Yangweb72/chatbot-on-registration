@@ -4,16 +4,16 @@ class PM:
 
     def get_possible_state(self, filled=True):
         if filled:
-            state = self.user_info["state"]
-            possible_states = self.state_info[state].get("possible_states", [])
-            self.user_info["possible_states"] = possible_states
+            state = self.user_info['state']
+            possible_states = self.state_info[state].get('possible_states', [])
+            self.user_info['possible_states'] = possible_states
         else:
-            state = self.user_info["state"]
+            state = self.user_info['state']
             possible_states = [state]
-            self.user_info["possible_states"] = possible_states
+            self.user_info['possible_states'] = possible_states
 
     def take_action(self, action):
-        if action == "CLEAN_SLOT":
+        if action == 'CLEAN_SLOT':
             for slot in self.slot_templet_info:
                 if slot in self.user_info:
                     del self.user_info[slot]
@@ -33,14 +33,14 @@ class PM:
         needed_slots = self.user_info["needed_slots"]
         # 如果槽位已经足够了可以直接回应
         if not needed_slots:
-            self.user_info["policy"] = "response"
+            self.user_info['policy'] = 'response'
             self.get_possible_state()
             self.get_actions()
         # 不然就可能的状态还是当前状态，接着填槽
         else:
             slot = needed_slots[0]
             self.get_possible_state(False)
-            self.user_info["policy"] = "need:%s" % slot
+            self.user_info['policy'] = 'need:%s' % slot
 
 
 def pm(user_info, state_info, slot_templet_info):

@@ -25,7 +25,7 @@ class ChatBot:
         self.state_info, self.slot_templet_info = load_schema(self.config)
 
     def query(self, sentence):
-        self.user_info["query"] = sentence
+        self.user_info['query'] = sentence
         self.user_info = nlu(self.user_info, self.state_info, self.slot_templet_info)
         self.user_info = dst(self.user_info, self.state_info)
         self.user_info = pm(self.user_info, self.state_info, self.slot_templet_info)
